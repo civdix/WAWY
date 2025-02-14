@@ -1,9 +1,21 @@
 const express = require("express");
+const User = require("../Models/User");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { body, validationResult } = require("express-validator");
 const JWT_SECRET_KEY = "ChachaChaudhary"; //Will Make it in .env file
+const hashedPass = async (password) => {
+  try {
+    const saltRounds = 5;
+    const salt = await bcrypt.genSalt(saltRounds); // Awaiting salt generation
+    const hash = await bcrypt.hash(password, salt); // Awaiting hash generation
+    return hash; // Returning the hashed password
+  } catch (e) {
+    console.error("Error in HashedPass Function: ", e);
+    throw new Error("Not Hashed");
+  }
+};
 router.post(
   "/signUp",
   [
@@ -17,16 +29,9 @@ router.post(
     const error = validationResult(req);
     if (!error.isEmpty()) {
       console.log("data entered is not Correct");
-      return res.status(500).json({ success: false, Error: errors.array() });
+      return res.status(500).json({ success: false, Error: error.array() });
     }
     try {
-      const saltRounds = 5;
-      const hashedPassword = "";
-      bcrypt.genSalt(saltRounds, function (err, salt) {
-        bcrypt.hash(req.body.password, salt, function (err, hash) {
-          hashedPassword = hash;
-        });
-      });
       User.create({
         firstName: req.body.fName,
         lastName: req.body.lName,
@@ -34,7 +39,7 @@ router.post(
         phone: parseInt(req.body.phone, 10),
         dob: new Date(req.body.dob),
         joined: new Date(),
-        password: hashedPassword,
+        password: await hashedPass(req.body.password),
       })
         .then(() => {
           const data = {
@@ -69,3 +74,5 @@ router.post(
     }
   }
 );
+
+module.exports = router;

@@ -1,0 +1,71 @@
+const express = require("express");
+const router = express.Router();
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+const { body, validationResult } = require("express-validator");
+const JWT_SECRET_KEY = "ChachaChaudhary"; //Will Make it in .env file
+router.post(
+  "/signUp",
+  [
+    body(
+      "Username",
+      "Please Enter Another Username(Only Number Not Allowed)"
+    ).isString(),
+    body("email", "Please Enter Valid Email Address").isEmail(),
+  ],
+  async (req, res) => {
+    const error = validationResult(req);
+    if (!error.isEmpty()) {
+      console.log("data entered is not Correct");
+      return res.status(500).json({ success: false, Error: errors.array() });
+    }
+    try {
+      const saltRounds = 5;
+      const hashedPassword = "";
+      bcrypt.genSalt(saltRounds, function (err, salt) {
+        bcrypt.hash(req.body.password, salt, function (err, hash) {
+          hashedPassword = hash;
+        });
+      });
+      User.create({
+        firstName: req.body.fName,
+        lastName: req.body.lName,
+        email: req.body.email,
+        phone: parseInt(req.body.phone, 10),
+        dob: new Date(req.body.dob),
+        joined: new Date(),
+        password: hashedPassword,
+      })
+        .then(() => {
+          const data = {
+            user: {
+              id: User.id,
+            },
+          };
+          const token = jwt.sign(data, JWT_SECRET_KEY);
+          res.json({
+            success: true,
+            token,
+          });
+        })
+        .catch((err) => {
+          if (err.code === 11000) {
+            //because in UserSchema we have pass to the Email Unique:true thats why on entering the already existed email will cause a error and catch function will caught the error and for duplicate entries error code is 11000
+            res.status(400).json({
+              error: "Sorry a user with this Username or Phone already exist",
+            });
+            console.error("Duplicate key error:", err);
+            // Handle duplicate key error (E11000) here
+          } else {
+            console.error("Error creating user:", err);
+            // Handle other errors otherthan error 11000 or duplicate value error
+          }
+        });
+    } catch (e) {
+      console.log("Error in Router Post signUp First Catch: ", e);
+      res
+        .status(400)
+        .json({ success: false, msg: "Internal Server Error in file auth.js" });
+    }
+  }
+);

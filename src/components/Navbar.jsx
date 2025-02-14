@@ -9,9 +9,9 @@ import { ImProfile } from "react-icons/im";
 
 function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark my-1 ">
       <Link className="navbar-brand z-999 " to="/">
-        "Need to edit"
+        WAWY{" "}
       </Link>
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">

@@ -1,0 +1,30 @@
+.cremation-planner {
+  background: linear-gradient(to bottom, #1a1a1a, #2d2d2d);
+}
+
+.cremation-planner .card {
+  transition: transform 0.3s ease;
+}
+
+.cremation-planner .card:hover {
+  transform: translateY(-5px);
+}
+
+.cremation-planner .btn {
+  transition: all 0.3s ease;
+}
+
+.cremation-planner .btn-outline-light:hover {
+  background-color: #ffeb3b;
+  color: #000;
+  border-color: #ffeb3b;
+}
+
+.cremation-planner .display-4 {
+  font-weight: 300;
+}
+
+.cremation-planner .lead {
+  font-weight: 300;
+  line-height: 1.6;
+}

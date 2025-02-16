@@ -1,0 +1,88 @@
+.about-page {
+  /* background: linear-gradient(to bottom, #1a1a1a, #2d2d2d); */
+  color: #fff;
+}
+
+.about-carousel {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.about-carousel .carousel-item {
+  height: 450px;
+}
+
+.about-carousel .carousel-item img {
+  object-fit: cover;
+  height: 100%;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  color: #ffeb3b;
+}
+
+.info-section {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.feature-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature-list li:last-child {
+  border-bottom: none;
+}
+
+.download-section {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-warning {
+  background-color: #ffeb3b;
+  border-color: #ffeb3b;
+  color: #000;
+  transition: all 0.3s ease;
+}
+
+.btn-warning:hover {
+  background-color: #ffd700;
+  border-color: #ffd700;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .about-carousel .carousel-item {
+    height: 300px;
+  }
+
+  .feature-card {
+    margin-bottom: 20px;
+  }
+}

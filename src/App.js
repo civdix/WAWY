@@ -3,7 +3,6 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import CremationPlanner from "./components/CremationPlanner";
-
 import {
   createBrowserRouter,
   RouterProvider,
@@ -11,6 +10,10 @@ import {
   Link,
 } from "react-router-dom";
 import About from "./components/About";
+import SignUp from "./components/SignUp";
+import Dashboard from "./components/Dashboard";
+import ContactUs from "./components/ContactUs";
+import ErrorPage from "./components/ErrorPage";
 function App() {
   try {
     const router = createBrowserRouter([
@@ -38,6 +41,41 @@ function App() {
           <>
             {" "}
             <About />
+          </>
+        ),
+      },
+      {
+        path: "/SignUp",
+        element: (
+          <>
+            {" "}
+            <SignUp />
+          </>
+        ),
+      },
+      {
+        path: "/dashboard",
+        element: (
+          <>
+            {" "}
+            <Dashboard />
+          </>
+        ),
+      },
+      {
+        path: "/ContactUs",
+        element: (
+          <>
+            {" "}
+            <ContactUs />
+          </>
+        ),
+      },
+      {
+        path: "*",
+        element: (
+          <>
+            <ErrorPage />
           </>
         ),
       },

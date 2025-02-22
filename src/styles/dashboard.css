@@ -1,0 +1,160 @@
+.dashboard-container {
+  background: inherit;
+  color: white;
+}
+
+.dashboard-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tab-btn {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tab-btn.active {
+  background: rgba(97, 218, 251, 0.2);
+  border-color: #61dafb;
+}
+
+/* Profile Section Styles */
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  background: rgba(97, 218, 251, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-details {
+  margin-top: 2rem;
+}
+
+.detail-item {
+  margin-bottom: 1rem;
+}
+
+.detail-item label {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.detail-item p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Process Tracker Styles */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.process-card {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.process-card.completed {
+  border-color: #28a745;
+}
+
+.process-card.in-progress {
+  border-color: #ffc107;
+}
+
+.process-card.not-started {
+  border-color: #dc3545;
+}
+
+.icon-wrapper {
+  font-size: 2rem;
+  color: #61dafb;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+}
+
+.status-badge.completed {
+  background: rgba(40, 167, 69, 0.2);
+  color: #28a745;
+}
+
+.status-badge.in-progress {
+  background: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+}
+
+.status-badge.not-started {
+  background: rgba(220, 53, 69, 0.2);
+  color: #dc3545;
+}
+
+/* Donation Tracker Styles */
+.donation-card {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.donation-card .amount {
+  font-size: 1.5rem;
+  margin: 0;
+  color: #61dafb;
+}
+
+.donation-card .usage {
+  margin: 0;
+  color: #999;
+}
+
+.donation-card .date {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #999;
+}
+
+.status-badge.utilized {
+  background: rgba(40, 167, 69, 0.2);
+  color: #28a745;
+}
+
+.status-badge.pending {
+  background: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+}
+
+@media (max-width: 768px) {
+  .dashboard-tabs {
+    flex-direction: column;
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+}

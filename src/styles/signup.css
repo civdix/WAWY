@@ -1,0 +1,54 @@
+.signup-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.signup-form {
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem;
+}
+
+.signup-form input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.signup-form input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.signup-form input:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: white;
+  box-shadow: none;
+}
+
+.signup-form input[type="date"] {
+  color-scheme: dark;
+}
+
+.signup-form .btn {
+  margin-top: 1rem;
+  padding: 0.5rem 2rem;
+}
+@font-face {
+  font-family: "FriendInfo";
+  src: url("../Assests/fonts/FriendInfo-nAvxM.ttf") format("truetype"); /* Relative path */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "FriendWrite";
+  src: url("../Assests/fonts/FriendWrite-9YYdy.ttf") format("truetype"); /* Relative path */
+  font-weight: normal;
+  font-style: normal;
+}
+.titleSignUp {
+  font-family: "FriendInfo", sans-serif;
+}

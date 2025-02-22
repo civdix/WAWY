@@ -2,9 +2,9 @@ const express = require("express");
 const User = require("../Models/User");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 const bcrypt = require("bcrypt");
 const { body, validationResult } = require("express-validator");
-const JWT_SECRET_KEY = "ChachaChaudhary"; //Will Make it in .env file
 const hashedPass = async (password) => {
   try {
     const saltRounds = 5;
@@ -28,11 +28,12 @@ router.post(
   async (req, res) => {
     const error = validationResult(req);
     if (!error.isEmpty()) {
-      console.log("data entered is not Correct");
+      console.log("data entered is not Correct\n Data: ", req.body);
       return res.status(500).json({ success: false, Error: error.array() });
     }
     try {
       User.create({
+        Username: req.body.Username,
         firstName: req.body.fName,
         lastName: req.body.lName,
         email: req.body.email,
@@ -47,7 +48,7 @@ router.post(
               id: User.id,
             },
           };
-          const token = jwt.sign(data, JWT_SECRET_KEY);
+          const token = jwt.sign(data, process.env.JWT_SECRET_KEY);
           res.json({
             success: true,
             token,
@@ -56,8 +57,19 @@ router.post(
         .catch((err) => {
           if (err.code === 11000) {
             //because in UserSchema we have pass to the Email Unique:true thats why on entering the already existed email will cause a error and catch function will caught the error and for duplicate entries error code is 11000
+            const errors = {
+              phone:
+                "The Provided Phone is already registered with a Account try to login",
+              Username:
+                "Please Select another Username as selected Username is not Available",
+            };
+
+            let errorMessage = "";
+            Object.keys(err.keyPattern).forEach((errorKey) => {
+              errorMessage += errors[errorKey] + "\n";
+            });
             res.status(400).json({
-              error: "Sorry a user with this Username or Phone already exist",
+              error: errorMessage,
             });
             console.error("Duplicate key error:", err);
             // Handle duplicate key error (E11000) here

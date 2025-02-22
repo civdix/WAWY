@@ -14,7 +14,7 @@ import { GoLaw } from "react-icons/go";
 import { TbCertificate } from "react-icons/tb";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { GiRiver, GiLetterBomb, GiTransportationRings } from "react-icons/gi"; // Import the necessary icon or replace with relevant ones
-const features = [
+export const features = [
   {
     title: "Selection of Cremation Sites",
     description:
@@ -87,14 +87,8 @@ const features = [
       "Provided Certificate will helps in legal documentation creation.",
     icon: <TbCertificate className="feature-icon mb-3" />,
   },
-  {
-    title: "Cremation Certificate ",
-    description:
-      "Provided Certificate will helps in legal documentation creation.",
-    icon: <TbCertificate className="feature-icon mb-3" />,
-  },
 ];
-const Services = (props) => {
+export const Services = (props) => {
   const [currentTrier, setCurrentTrier] = useState(0);
   const [trier, setTrier] = useState(
     features.slice(currentTrier, currentTrier + 3)
@@ -148,5 +142,3 @@ const Services = (props) => {
     </div>
   );
 };
-
-export default Services;

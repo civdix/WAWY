@@ -53,7 +53,7 @@ function Navbar() {
           </li>
 
           <li className="nav-item active">
-            <Link className="nav-link" to="/Contact">
+            <Link className="nav-link" to="/ContactUs">
               Contact Us
               <MdOutlineContactSupport className="d-none" size={25} />
             </Link>

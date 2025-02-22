@@ -8,8 +8,9 @@ import {
   FaHandHoldingHeart,
 } from "react-icons/fa";
 import "../styles/about.css";
-import Services from "./subcomponent/services";
-function About() {
+import { Services } from "./subcomponent/services";
+
+const About = () => {
   const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex) => {
@@ -58,6 +59,17 @@ function About() {
               <Carousel.Item>
                 <img
                   className="d-block w-100"
+                  src={require("../Assests/images/legaltoritual.webp")}
+                  alt="Responsibilty"
+                />
+                <Carousel.Caption className="glassy">
+                  <h3>Take Full Responsibilty</h3>
+                  <p>Handles Legal to Ritual all the Things</p>
+                </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
                   src={require("../Assests/images/familylove.webp")}
                   alt="Compassionate Service"
                 />
@@ -75,17 +87,6 @@ function About() {
                 <Carousel.Caption className="glassy">
                   <h3>Simplified Planning</h3>
                   <p>User-friendly tools for seamless arrangements</p>
-                </Carousel.Caption>
-              </Carousel.Item>
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src={require("../Assests/images/legaltoritual.webp")}
-                  alt="Responsibilty"
-                />
-                <Carousel.Caption className="glassy">
-                  <h3>Take Full Responsibilty</h3>
-                  <p>Handles Legal to Ritual all the Things</p>
                 </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>
@@ -202,6 +203,6 @@ function About() {
       </div>
     </div>
   );
-}
+};
 
 export default About;

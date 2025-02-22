@@ -40,6 +40,7 @@ const SignUp = () => {
       const data = await response.json();
       if (data.success) {
         localStorage.setItem("token", data.token);
+        console.log(data.token);
         navigate("/dashboard");
       } else {
         setError(data.error || "Something went wrong");

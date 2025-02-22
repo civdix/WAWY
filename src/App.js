@@ -14,6 +14,7 @@ import SignUp from "./components/SignUp";
 import Dashboard from "./components/Dashboard";
 import ContactUs from "./components/ContactUs";
 import ErrorPage from "./components/ErrorPage";
+import Login from "./components/Login";
 function App() {
   try {
     const router = createBrowserRouter([
@@ -28,12 +29,7 @@ function App() {
       },
       {
         path: "/",
-        element: (
-          <>
-            {" "}
-            <Home />
-          </>
-        ),
+        element: <> {localStorage.getItem("token") ? <Home /> : <SignUp />}</>,
       },
       {
         path: "/About",
@@ -50,6 +46,15 @@ function App() {
           <>
             {" "}
             <SignUp />
+          </>
+        ),
+      },
+      {
+        path: "/Login",
+        element: (
+          <>
+            {" "}
+            <Login />
           </>
         ),
       },

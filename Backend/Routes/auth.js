@@ -16,6 +16,30 @@ const hashedPass = async (password) => {
     throw new Error("Not Hashed");
   }
 };
+
+router.post("/login", async (req, res) => {
+  const { Username, password } = req.body;
+  const user = await User.findOne({ Username: Username }, "password _id");
+  const isMatch = await bcrypt.compare(password, user.password);
+  if (isMatch) {
+    const data = {
+      user: {
+        id: user.id,
+      },
+    };
+    const token = jwt.sign(data, process.env.JWT_SECRET_KEY);
+    res.json({
+      success: true,
+      token,
+    });
+  } else {
+    res.status(400).json({
+      success: false,
+      error: "UnAuthorised Access",
+    });
+  }
+});
+
 router.post(
   "/signUp",
   [

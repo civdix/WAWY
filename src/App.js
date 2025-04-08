@@ -29,7 +29,7 @@ function App() {
       },
       {
         path: "/",
-        element: <> {localStorage.getItem("token") ? <Home /> : <SignUp />}</>,
+        element: <> {!localStorage.getItem("token") ? <Home /> : <SignUp />}</>,
       },
       {
         path: "/About",
